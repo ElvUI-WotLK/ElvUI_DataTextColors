@@ -23,14 +23,13 @@ end
 -- Do the job
 function DTC:ColorFont()
 	for panelName, panel in pairs(DT.RegisteredPanels) do
-		for i = 1, panel.numPoints do
-			local pointIndex = DT.PointLocation[i]
+		for _, dataPanel in pairs(panel.dataPanels) do
 			if E.db.dtc.customColor == 1 then
-				panel.dataPanels[pointIndex].text:SetTextColor(classColor.r, classColor.g, classColor.b)
+				dataPanel.text:SetTextColor(classColor.r, classColor.g, classColor.b)
 			elseif E.db.dtc.customColor == 2 then
-				panel.dataPanels[pointIndex].text:SetTextColor(unpackColor(E.db.dtc.userColor))
+				dataPanel.text:SetTextColor(unpackColor(E.db.dtc.userColor))
 			else
-				panel.dataPanels[pointIndex].text:SetTextColor(unpackColor(E.db.general.valuecolor))
+				dataPanel.text:SetTextColor(unpackColor(E.db.general.valuecolor))
 			end
 		end
 	end
